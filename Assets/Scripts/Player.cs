@@ -3,6 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject Shot;
+    public Canvas GameOver;
+
     float _speed = 10f;
     
     void Update()
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GameManager.CanvasOn();
         }
 
     }

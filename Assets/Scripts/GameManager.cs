@@ -14,13 +14,16 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
 
     public static UnityAction Scoring;
+    public static UnityAction CanvasOn;
 
     int _score;
     Vector3 _platformStartPos;
 
     private void Awake()
     {
+        GameOver.gameObject.SetActive(false);
         Scoring += GetScore;
+        CanvasOn += TurnOnCanvas;
         _platformStartPos = Platform.transform.position;
     }
 
@@ -60,6 +63,12 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         GameObject[] currentMonsters = GameObject.FindGameObjectsWithTag("Monster");
         GameObject currentPlatform = GameObject.FindGameObjectWithTag("Platform");
+
+        currentPlatform.SetActive(false);
+        for (int i = 0; i < currentMonsters.Length; i++)
+        {
+            currentMonsters[i].SetActive(false);
+        }
         
         ReStart();
     }
@@ -67,9 +76,16 @@ public class GameManager : MonoBehaviour
     void ReStart()
     {
         _score = 0;
+        ScoreText.text = $"Score : {_score}";
         Instantiate(Player);
         Instantiate(Platform);
         StartCoroutine(SpawnPlatform());
         StartCoroutine(SpawnMonster());
+        Background.RestartBg();
+    }
+
+    void TurnOnCanvas()
+    {
+        GameOver.gameObject.SetActive(true);
     }
 }

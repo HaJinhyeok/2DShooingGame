@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shot_poulpi_0: 611871713516716203
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
