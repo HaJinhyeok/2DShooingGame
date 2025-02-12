@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         GameObject[] currentMonsters = GameObject.FindGameObjectsWithTag("Monster");
         GameObject currentPlatform = GameObject.FindGameObjectWithTag("Platform");
 
-        currentPlatform.SetActive(false);
+        currentPlatform?.SetActive(false);
         for (int i = 0; i < currentMonsters.Length; i++)
         {
             currentMonsters[i].SetActive(false);
